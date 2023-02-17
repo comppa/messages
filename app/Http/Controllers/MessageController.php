@@ -33,8 +33,8 @@ class MessageController extends Controller
             //Consultado los ids
             $users = Id::all()->random(300);
             foreach ($users as $value){
-                $wb_token = '9e1e455fea946fba838e9048f31f073b60f3d8b99cf64';
-                $wb_from = '573016363676';
+                $wb_token = TOKEN;
+                $wb_from = SEND_NUMBER;
                 $id = uniqid($prefix = "HL");
                 $in_number = '57'.$value->number;
                 $name = explode(' ', $value->name)[0];
@@ -54,10 +54,9 @@ class MessageController extends Controller
 
             return view('message');
 
-            /* $wb_token = 'c9797bc0f0eab9b3b7852f49b68244fc60d386bb6f891';
-            $wb_from = '573244718792';
+            /* $wb_token = TOKEN;
+                $wb_from = SEND_NUMBER;
             $id = uniqid($prefix = "HL");
-            $in_number = '573146223694';
             $in_text = 'Hola ' . 'Juan+ Fernando Moreno' . $request->get('msg');
             $client = new GuzzleHttp\Client();
             $url = 'https://www.waboxapp.com/api/send/chat';
@@ -77,11 +76,10 @@ class MessageController extends Controller
             //Consultado los ids
             $users = Id::all()->take(1);
             foreach ($users as $value){
-                $wb_token = '9e1e455fea946fba838e9048f31f073b60f3d8b99cf64';
-                $wb_from = '573147405895';
+                $wb_token = TOKEN;
+                $wb_from = SEND_NUMBER;
                 $id = uniqid($prefix = "HL");
                 $in_number = '57'.$value->number;
-                $in_number = '573003771385';
                 $name = explode(' ', $value->name)[0];
                /*  $url_meta = '$request->get('url')'; */
                 $url_meta = 'https://demo.twilio.com/owl.png';
@@ -105,10 +103,9 @@ class MessageController extends Controller
 
             return view('image');
 
-            /* $wb_token = 'c9797bc0f0eab9b3b7852f49b68244fc60d386bb6f891';
-            $wb_from = '573244718792';
+            /* $wb_token = TOKEN;
+                $wb_from = SEND_NUMBER;
             $id = uniqid($prefix = "HL");
-            $in_number = '573146223694';
             $in_text = 'Hola ' . 'Juan Fernando Moreno' . $request->get('msg');
             $client = new GuzzleHttp\Client();
             $url = 'https://www.waboxapp.com/api/send/chat';
@@ -129,11 +126,10 @@ class MessageController extends Controller
             //Consultado los ids
             $users = Id::all()->take(1);
             foreach ($users as $value){
-                $wb_token = '9e1e455fea946fba838e9048f31f073b60f3d8b99cf64';
-                $wb_from = '573147405893';
+                $wb_token = TOKEN;
+                $wb_from = SEND_NUMBER;
                 $id = uniqid($prefix = "HL");
                 $in_number = '57'.$value->number;
-                $in_number = '573003771385';
                 $name = explode(' ', $value->name)[0];
                 $url_meta = $request->get('url');
                 $title = $request->get('title');
@@ -154,8 +150,8 @@ class MessageController extends Controller
 
             return view('link');
 
-            /* $wb_token = 'c9797bc0f0eab9b3b7852f49b68244fc60d386bb6f891';
-            $wb_from = '573244718792';
+            /* $wb_token = TOKEN;
+                $wb_from = SEND_NUMBER;
             $id = uniqid($prefix = "HL");
             $in_number = '573146223694';
             $in_text = 'Hola ' . 'Juan Fernando Moreno' . $request->get('msg');
@@ -190,7 +186,7 @@ class MessageController extends Controller
             Log::Info($respond_number);
             $url = "https://messages-sandbox.nexmo.com/v0.1/messages";
             $params = ["to" => ["type" => "whatsapp", "number" => $data['from']['number']],
-                "from" => ["type" => "whatsapp", "number" => "573244718792"],
+                "from" => ["type" => "whatsapp", "number" => SEND_NUMBER],
                 "message" => [
                     "content" => [
                         "type" => "text",
@@ -198,7 +194,7 @@ class MessageController extends Controller
                     ]
                 ]
             ];
-            $headers = ["Authorization" => "Basic " . base64_encode('12025985'. ":" . '8mWYBKbcCT0zN0St')];
+            $headers = ["Authorization" => "Basic " . base64_encode(''. ":" . '')];
 
             $client = new \GuzzleHttp\Client();
             $response = $client->request('POST', $url, ["headers" => $headers, "json" => $params]);
