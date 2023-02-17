@@ -21,8 +21,30 @@ Route::get('/', function () {
 
 Route::get('/message', [App\Http\Controllers\MessageController::class, 'create'])->name('message.create');
 
-Route::post('/message', [App\Http\Controllers\MessageController::class, 'store'])->name('store');
+Route::post('/message', [App\Http\Controllers\MessageController::class, 'store'])->name('message.store');
 
-Route::post('/webhooks/status', [App\Http\Controllers\MessageController::class, 'status'])->name('message.status');
+Route::get('/link', [App\Http\Controllers\MessageController::class, 'link'])->name('message.link');
+
+
+Route::post('/link', [App\Http\Controllers\MessageController::class, 'send_link'])->name('message.send_link');
+
+
+
+Route::get('/image', [App\Http\Controllers\MessageController::class, 'image'])->name('message.link');
+
+
+Route::post('/image', [App\Http\Controllers\MessageController::class, 'send_image'])->name('message.send_image');
+
+
+
+
+Route::post('/webhooks', [App\Http\Controllers\MessageController::class, 'status'])->name('message.status');
 
 Route::post('/webhooks/inbound', [App\Http\Controllers\MessageController::class, 'inbound'])->name('inbound');
+
+
+Route::get('/importar', [App\Http\Controllers\ImportController::class, 'importExportView']);
+
+Route::get('export', [App\Http\Controllers\ImportController::class, 'export'])->name('export');
+
+Route::post('import', [App\Http\Controllers\ImportController::class, 'import'])->name('import');
